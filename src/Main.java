@@ -32,7 +32,7 @@ public class Main {
                 playAgain = false;
                 System.out.println("Good bye!");
             }
-        }while(playAgain);
+        } while (playAgain);
 
     }
 
