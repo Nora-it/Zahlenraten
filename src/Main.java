@@ -8,12 +8,22 @@ public class Main {
             System.out.println("Ich denke mir jetzt eine Zahl von 0 bis 100 aus.... ");
             var rand = new Random();
             var zf = rand.nextInt(100);
-            int eingabe;
+            int eingabe = -1;
             var scanner = new Scanner(System.in);
             do {
-                System.out.print("Rate die Zahl:");
+                boolean eingabeOK=false;
+                do {
+                    System.out.print("Rate die Zahl:");
+                    try {
+                        eingabe = scanner.nextInt();
+                        eingabeOK=true;
+                    } catch (Exception e) {
+                        scanner.next();
+                        System.out.println("Fehlerhafte Eingabe!");
+                    }
+                }
+                while (!eingabeOK);
 
-                eingabe = scanner.nextInt();
                 if (eingabe > zf) {
                     System.out.println("zu groß!");
                 } else if (eingabe < zf) {
@@ -24,15 +34,14 @@ public class Main {
 
             System.out.println("Congratulations!!!");
             System.out.println("Möchtest du erneut spielen?(j/J)");
-            var auswl=scanner.next();
-            if (auswl.charAt(0)=='j' || auswl.charAt(0)=='J'){
+            var auswl = scanner.next();
+            if (auswl.charAt(0) == 'j' || auswl.charAt(0) == 'J') {
                 playAgain = true;
-            }
-            else{
+            } else {
                 playAgain = false;
                 System.out.println("Good bye!");
             }
-        }while(playAgain);
+        } while (playAgain);
 
     }
 
